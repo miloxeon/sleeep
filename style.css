@@ -36,3 +36,28 @@ footer {
     transform: rotate(360deg);
   }
 }
+
+.time {
+  display: inline-block;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, .2);
+  border-radius: 6px;
+  font-weight: 100;
+  font-size: 2rem;
+  width: 123px;
+  text-align: center;
+}
+
+.times {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  margin: 0 -20px;
+  margin-bottom: 30px;
+}
+
+.times>* {
+  margin: 20px;
+}

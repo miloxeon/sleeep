@@ -9,7 +9,12 @@ const preloader = () => `
 // template if calculations were successful. Accepts { timeToFour, timeToFive, sunrise }, all strings
 const template = times => `
   <p>
-    Go to bed at <strong>${times.timeToSix}</strong> or <strong>${times.timeToFive}</strong> or <strong>${times.timeToFour}</strong>
+    Go to bed at
+    <div class='times'>
+      <strong class='time'>${times.timeToSix}</strong>
+      <strong class='time'>${times.timeToFive}</strong>
+      <strong class='time'>${times.timeToFour}</strong>
+    </div>
     to wake up with the sunrise (${times.sunrise}) and feel well-rested.
   </p>
 `
