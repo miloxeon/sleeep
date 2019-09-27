@@ -17,9 +17,16 @@ main {
   flex-grow: 2;
 }
 
-header,
-footer {
+body>header {
   width: 100%;
+  margin-bottom: 30px;
+}
+
+body>header>h1 {
+  font-size: 5.5rem;
+  color: white;
+  margin-bottom: 0;
+  letter-spacing: -0.1rem;
 }
 
 .preloader {
