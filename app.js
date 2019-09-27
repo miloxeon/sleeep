@@ -9,7 +9,7 @@ const preloader = () => `
 // template if calculations were successful. Accepts { timeToFour, timeToFive, sunrise }, all strings
 const template = times => `
   <p>
-    Go to bed at <strong>${times.timeToFive}</strong> or <strong>${times.timeToFour}</strong>
+    Go to bed at <strong>${times.timeToSix}</strong> or <strong>${times.timeToFive}</strong> or <strong>${times.timeToFour}</strong>
     to wake up with the sunrise (${times.sunrise}) and feel well-rested.
   </p>
 `
@@ -52,6 +52,7 @@ navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude }}, er
     const timeToFallAsleep = 14
     const fourCycles = 4 * 90
     const fiveCycles = 5 * 90
+    const sixCycles = 6 * 90
 
     // calculate the time to go to sleep to rest for four cycles
     const dateToFour = new Date(sunriseDate)
@@ -63,6 +64,11 @@ navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude }}, er
     dateToFive.setMinutes(dateToFive.getMinutes() - fiveCycles - timeToFallAsleep)
     timeToFive = dateToHHMM(dateToFive)
 
+    // calculate the time to go to sleep to rest for six cycles
+    const dateToSix = new Date(sunriseDate)
+    dateToSix.setMinutes(dateToSix.getMinutes() - sixCycles - timeToFallAsleep)
+    timeToSix = dateToHHMM(dateToSix)
+
     // convert sunrise date to HH:mm
     sunrise = dateToHHMM(sunriseDate)
 
@@ -70,7 +76,8 @@ navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude }}, er
     root.innerHTML = template({
       sunrise,
       timeToFour,
-      timeToFive
+      timeToFive,
+      timeToSix
     })
   }
 })
