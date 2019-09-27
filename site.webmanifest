@@ -1,6 +1,7 @@
 {
     "name": "Sleeep",
     "short_name": "Sleeep",
+    "start_url": ".",
     "icons": [
         {
             "src": "icons/android-chrome-192x192.png",
