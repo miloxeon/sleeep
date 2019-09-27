@@ -22,12 +22,8 @@ body>header {
   margin-bottom: 30px;
 }
 
-body>header>h1 {
-  font-size: 5.5rem;
-  color: white;
-  margin-bottom: 0;
-  letter-spacing: -0.1rem;
-  text-shadow: 0 10px 40px rgba(0, 0, 0, .1);
+.logo {
+  filter: drop-shadow(0 10px 40px rgba(0, 0, 0, .1));
 }
 
 .preloader {
