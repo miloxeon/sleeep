@@ -47,7 +47,7 @@ body>header {
   display: inline-block;
   background-color: white;
   padding: 20px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, .2);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, .1);
   border-radius: 6px;
   font-weight: 100;
   font-size: 2rem;
