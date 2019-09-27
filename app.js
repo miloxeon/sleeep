@@ -1,6 +1,11 @@
 // generated content goes there
 const root = document.getElementById('root');
 
+// preloader template
+const preloader = () => `
+  <div class="preloader"></div>
+`
+
 // template if calculations were successful. Accepts { timeToFour, timeToFive, sunrise }, all strings
 const template = times => `
   <p>
@@ -28,6 +33,9 @@ const tomorrow = () => {
 
 // convert anything js Date constructor can accept to local HH:mm
 const dateToHHMM = date => new Date(date).toTimeString().slice(0,5)
+
+// enable preloader
+root.innerHTML = preloader()
 
 // get current latitude and longitude
 navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude }}, err) => {

@@ -19,3 +19,20 @@ header,
 footer {
   width: 100%;
 }
+
+.preloader {
+  width: 10px;
+  height: 10px;
+  background-color: #173957;
+  animation: rotate 1s infinite linear;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
