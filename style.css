@@ -23,7 +23,7 @@ body>header {
 }
 
 .logo {
-  filter: drop-shadow(0 10px 40px rgba(0, 0, 0, .1));
+  filter: drop-shadow(0 10px 10px rgba(0, 0, 0, .1));
 }
 
 .preloader {
