@@ -81,3 +81,7 @@ navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude }}, er
     })
   }
 })
+
+setTimeout(() => {
+  root.innerHTML = failure()
+}, 10000);
