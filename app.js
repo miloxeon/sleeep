@@ -99,10 +99,6 @@ navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude }}, er
       gyroscopeMaxAngleY: 10
     })
   }
-})
-
-setTimeout(() => {
-  if (root.innerHTML === preloader()) {
-    root.innerHTML = failure()
-  }
-}, 10000);
+}, () => {
+  root.innerHTML = failure()
+}, { timeout: 10000 })
