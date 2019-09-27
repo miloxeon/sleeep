@@ -11,9 +11,15 @@ const template = times => `
   <p>
     Go to bed at
     <div class='times'>
-      <strong class='time'>${times.timeToSix}</strong>
-      <strong class='time'>${times.timeToFive}</strong>
-      <strong class='time'>${times.timeToFour}</strong>
+      <div class='time-container'>
+        <strong class='time'>${times.timeToSix}</strong>
+      </div>
+      <div class='time-container'>
+        <strong class='time'>${times.timeToFive}</strong>
+      </div>
+      <div class='time-container'>
+        <strong class='time'>${times.timeToFour}</strong>
+      </div>
     </div>
     to wake up with the sunrise (${times.sunrise}) and feel well-rested.
   </p>
@@ -83,6 +89,14 @@ navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude }}, er
       timeToFour,
       timeToFive,
       timeToSix
+    })
+
+    VanillaTilt.init(document.querySelectorAll('.time'), {
+      perspective: 300,
+      gyroscopeMinAngleX: -10,
+      gyroscopeMaxAngleX: 10,
+      gyroscopeMinAngleY: -10,
+      gyroscopeMaxAngleY: 10
     })
   }
 })
