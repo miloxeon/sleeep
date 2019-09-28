@@ -29,7 +29,6 @@ const failure = () => `
   <p>
     An error occured. This may be because you haven't allowed the location access.<br>
     We need your location to calculate the sunrise time.<br>
-    We don't collect any data.<br>
     Please reload page and allow location.
   </p>
 `
