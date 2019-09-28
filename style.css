@@ -30,7 +30,7 @@ body>header {
 .preloader {
   width: 10px;
   height: 10px;
-  background-color: #173957;
+  background-color: black;
   animation: rotate 1s infinite linear;
 }
 
