@@ -47,57 +47,55 @@ const dateToHHMM = date => new Date(date).toTimeString().slice(0,5)
 // enable preloader
 root.innerHTML = preloader()
 
+const calculateBedTimeByCycles = ({ sleepTime, sunriseDate, timeToFallAsleep }) => {
+  let result = new Date(sunriseDate)
+  result.setMinutes(result.getMinutes() - sleepTime - timeToFallAsleep)
+  return dateToHHMM(result)
+}
+
+const performCalculation = ({ coords: { latitude, longitude }}) => {
+  // calculate full sunrise time (bottom of the sun touches horizon)
+  const { sunriseEnd: sunriseDate } = SunCalc.getTimes(tomorrow(), latitude, longitude)
+
+  // some constants
+  const timeToFallAsleep = 14
+
+  // calculate the time to go to sleep to rest for four cycles
+  const timeToFour = calculateBedTimeByCycles({
+    sleepTime: 4 * 90,
+    sunriseDate, timeToFallAsleep
+  })
+
+  // calculate the time to go to sleep to rest for five cycles
+  const timeToFive = calculateBedTimeByCycles({
+    sleepTime: 5 * 90,
+    sunriseDate, timeToFallAsleep
+  })
+
+  // calculate the time to go to sleep to rest for six cycles
+  const timeToSix = calculateBedTimeByCycles({
+    sleepTime: 6 * 90,
+    sunriseDate, timeToFallAsleep
+  })
+
+  // convert sunrise date to HH:mm
+  sunrise = dateToHHMM(sunriseDate)
+
+  // display times
+  root.innerHTML = template({ sunrise, timeToFour, timeToFive, timeToSix })
+
+  VanillaTilt.init(document.querySelectorAll('.time'), {
+    perspective: 300,
+    gyroscopeMinAngleX: -10,
+    gyroscopeMaxAngleX: 10,
+    gyroscopeMinAngleY: -10,
+    gyroscopeMaxAngleY: 10
+  })
+}
+
 // get current latitude and longitude
-navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude }}, err) => {
-
-  // if error, display error
-  if (err) {
-    root.innerHTML = failure()
-  } else {
-
-    // calculate full sunrise time (bottom of the sun touches horizon)
-    const { sunriseEnd: sunriseDate } = SunCalc.getTimes(tomorrow(), latitude, longitude)
-
-    // some constants
-    const timeToFallAsleep = 14
-    const fourCycles = 4 * 90
-    const fiveCycles = 5 * 90
-    const sixCycles = 6 * 90
-
-    // calculate the time to go to sleep to rest for four cycles
-    const dateToFour = new Date(sunriseDate)
-    dateToFour.setMinutes(dateToFour.getMinutes() - fourCycles - timeToFallAsleep)
-    timeToFour = dateToHHMM(dateToFour)
-
-    // calculate the time to go to sleep to rest for five cycles
-    const dateToFive = new Date(sunriseDate)
-    dateToFive.setMinutes(dateToFive.getMinutes() - fiveCycles - timeToFallAsleep)
-    timeToFive = dateToHHMM(dateToFive)
-
-    // calculate the time to go to sleep to rest for six cycles
-    const dateToSix = new Date(sunriseDate)
-    dateToSix.setMinutes(dateToSix.getMinutes() - sixCycles - timeToFallAsleep)
-    timeToSix = dateToHHMM(dateToSix)
-
-    // convert sunrise date to HH:mm
-    sunrise = dateToHHMM(sunriseDate)
-
-    // display times
-    root.innerHTML = template({
-      sunrise,
-      timeToFour,
-      timeToFive,
-      timeToSix
-    })
-
-    VanillaTilt.init(document.querySelectorAll('.time'), {
-      perspective: 300,
-      gyroscopeMinAngleX: -10,
-      gyroscopeMaxAngleX: 10,
-      gyroscopeMinAngleY: -10,
-      gyroscopeMaxAngleY: 10
-    })
-  }
+navigator.geolocation.getCurrentPosition(geoData => {
+  performCalculation(geoData)
 }, () => {
   root.innerHTML = failure()
 }, { timeout: 10000 })
