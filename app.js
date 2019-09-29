@@ -99,3 +99,4 @@ navigator.geolocation.getCurrentPosition(geoData => {
 }, () => {
   root.innerHTML = failure()
 }, { timeout: 10000 })
+  console.error(err.message)
