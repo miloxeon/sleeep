@@ -38,23 +38,6 @@
   <link rel="shortcut icon" href="icons/favicon.ico">
   <meta name="theme-color" content="#ffffff">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-  <script>
-    (function(m, e, t, r, i, k, a) {
-      m[i] = m[i] || function() {
-        (m[i].a = m[i].a || []).push(arguments)
-      };
-      m[i].l = 1 * new Date();
-      k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
-    })
-    (window, document, "script", "https://cdn.jsdelivr.net/npm/yandex-metrica-watch/tag.js", "ym");
-
-    ym(55533982, "init", {
-      clickmap: true,
-      trackLinks: true,
-      accurateTrackBounce: true
-    });
-  </script>
 </head>
 
 <body>
@@ -121,9 +104,10 @@
     </p>
   </template>
 
-  <script src="https://cdn.jsdelivr.net/npm/suncalc@1.8.0/suncalc.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.babel.min.js"></script>
-  <script src="app.js"></script>
+  <script src='app/analytics.js'></script>
+  <script src="//cdn.jsdelivr.net/npm/suncalc@1.8.0/suncalc.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.babel.min.js"></script>
+  <script src="app/app.js"></script>
 </body>
 
 </html>
