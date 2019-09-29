@@ -72,13 +72,58 @@
       wake up is to wake up with sunrise.
     </p>
     <p>So...</p>
-    <div id="root"></div>
+    <div id="root">
+      <div class="preloader"></div>
+    </div>
   </main>
   <footer>
     <small>
       &copy; <a href="https://miloslav.website" rel="noopener noreferrer" target="_blank">Miloslav Voloskov</a>
     </small>
   </footer>
+
+  <template id='success'>
+    <p>
+      Go to bed at
+      <div class='times'>
+        <div class='time-container'>
+          <strong class='time'>
+            <span data-template='timeToSix'></span>
+          </strong>
+        </div>
+        <div class='time-container'>
+          <strong class='time'>
+            <span data-template='timeToFive'></span>
+          </strong>
+        </div>
+        <div class='time-container'>
+          <strong class='time'>
+            <span data-template='timeToFour'></span>
+          </strong>
+        </div>
+      </div>
+      to wake up with the sunrise
+      (<span data-template='timeSunrise'></span>)
+      and feel well-rested.
+    </p>
+    <script>
+      VanillaTilt.init(document.querySelectorAll('.time'), {
+        perspective: 300,
+        gyroscopeMinAngleX: -10,
+        gyroscopeMaxAngleX: 10,
+        gyroscopeMinAngleY: -10,
+        gyroscopeMaxAngleY: 10
+      })
+    </script>
+  </template>
+
+  <template id='failure'>
+    <p>
+      An error occured. This may be because you haven't allowed the location access.<br>
+      We need your location to calculate the sunrise time.<br>
+      Please reload page and allow location.
+    </p>
+  </template>
 
   <script src="https://cdn.jsdelivr.net/npm/suncalc@1.8.0/suncalc.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.babel.min.js"></script>
